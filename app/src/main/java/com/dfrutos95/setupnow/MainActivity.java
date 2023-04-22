@@ -9,6 +9,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,6 +17,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.material.navigation.NavigationBarView;
 
@@ -56,6 +58,24 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    //Lo del menu no funciona
+    public boolean onCreateOptionsMenu(Menu menu) {
+        //si quieres un menú, "ínflalo"
+        getMenuInflater().inflate(R.menu.menu,menu);
+        return super.onCreateOptionsMenu(menu);
+
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        int itemId = item.getItemId();
+        if (itemId == R.id.Opcion1) {
+            // Handle Home navigation item click
+            System.exit(0);
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
     public void mostrarCesta(){
         Intent abrirCesta = new Intent(this, Cesta.class);
         startActivity(abrirCesta);
